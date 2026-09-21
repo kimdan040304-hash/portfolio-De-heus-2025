@@ -13,6 +13,7 @@ export interface ProjectContent {
   videoBorder?: boolean;
   live?: string;
   source?: string;
+  proposalLink?: string;
   components?: ProjectComponent[];
 }
 
@@ -24,6 +25,7 @@ export interface SkillContent {
 export interface ProjectPreview {
   title: string;
   slug: string;
-  thumbnail: string;
+  thumbnail?: string;
   description: string;
+  externalLink?: string;
 }

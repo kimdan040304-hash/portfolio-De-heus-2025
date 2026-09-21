@@ -37,4 +37,12 @@ export default [
     thumbnail: thumbnailVnsic,
     description: "Media & communications for a 2,000+ attendee innovation event",
   },
+  {
+    title: "Nghe Tiếng Là Có Miếng, Tet 2027 Campaign Proposal",
+    slug: "nghe-tieng-la-co-mieng",
+    thumbnail: "/proposal-3-chu-meo.png",
+    description:
+      "A self-initiated campaign proposal for Truoo Pet Care's Tet 2027 season, built from market research to a full measurement plan across content, KOC, livestream and retail activation.",
+    externalLink: "/nghe-tieng-la-co-mieng.html",
+  },
 ] as const satisfies ProjectPreview[];

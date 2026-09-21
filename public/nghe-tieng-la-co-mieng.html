@@ -1,0 +1,480 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0"><title>Nghe Tiếng Là Có Miếng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #F6F3EE;
+  --surface: #FFFFFF;
+  --ink: #2A1F1B;
+  --muted: #6B5A52;
+  --line: #E4DAD0;
+  --accent: #B3261E;
+  --accent-soft: #F8E4E0;
+  --on-accent: #FFFFFF;
+  --hi: #D9932B;
+  --hi-soft: #FBEBD0;
+  --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171110; --surface: #221917; --ink: #F3E9E4; --muted: #BFAEA5; --line: #3A2C28;
+    --accent: #F0806F; --accent-soft: #3A1D19; --on-accent: #2A0F0B; --hi: #F0B458; --hi-soft: #33260F;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171110; --surface: #221917; --ink: #F3E9E4; --muted: #BFAEA5; --line: #3A2C28;
+  --accent: #F0806F; --accent-soft: #3A1D19; --on-accent: #2A0F0B; --hi: #F0B458; --hi-soft: #33260F;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+p { margin: 0 0 1em; max-width: 68ch; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+
+.top { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: baseline; padding-block: 20px; font-size: 14px; }
+.top .who { font-weight: 700; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+
+.hero { padding-block: 36px 48px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+h1 { font-size: clamp(2.2rem, 6.4vw, 4.2rem); line-height: 1.06; font-weight: 800; letter-spacing: -0.03em; max-width: 14ch; }
+h1 span { color: var(--accent); }
+.lead { font-size: clamp(1.05rem, 1.7vw, 1.22rem); color: var(--muted); margin-top: 22px; max-width: 58ch; }
+.pill { display: inline-block; margin-top: 4px; padding: 6px 12px; border-radius: 999px; background: var(--hi-soft); font-size: 13px; line-height: 1.4; }
+
+.tldr { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 32px; margin-top: 36px; }
+.tldr > div { border-top: 2px solid var(--accent); padding-top: 12px; }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+.tldr p { margin: 0; font-size: 15.5px; }
+.en { margin-top: 32px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; max-width: 76ch; }
+.en p { margin: 0; font-size: 14.5px; }
+
+section { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px 40px; padding-block: 48px; border-top: 1px solid var(--line); }
+section > .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-top: 8px; }
+section > .body > * + * { margin-top: 26px; }
+h2 { font-size: clamp(1.35rem, 2.5vw, 1.8rem); font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; max-width: 32ch; }
+h3 { font-size: 1.05rem; font-weight: 700; line-height: 1.35; }
+.sub { color: var(--muted); font-size: 14px; }
+@media (max-width: 760px) {
+  section { grid-template-columns: minmax(0, 1fr); padding-block: 38px; }
+  section > .label { padding-top: 0; }
+}
+
+.facts { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.facts li { padding-left: 16px; position: relative; max-width: 72ch; font-size: 15px; }
+.facts li::before { content: ""; position: absolute; left: 0; top: 0.8em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.facts .src { color: var(--muted); font-size: 13px; }
+
+.pains { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card p { margin: 0; font-size: 14.5px; max-width: none; }
+.badge { align-self: flex-start; font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.badge.hyp { background: var(--hi-soft); color: var(--ink); }
+.opp { font-size: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
+.opp b { font-weight: 600; }
+
+.idea { border-top: 2px solid var(--accent); padding-top: 18px; }
+.idea .big { font-size: clamp(2rem, 5.2vw, 3.4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+.idea .big span { color: var(--accent); }
+.km { font-size: clamp(1.15rem, 2.1vw, 1.45rem); font-weight: 600; line-height: 1.45; max-width: 34ch; letter-spacing: -0.01em; }
+.three { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.three .card { gap: 6px; }
+.three h3 { font-size: 1.02rem; color: var(--accent); }
+
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 620px; }
+th, td { text-align: left; vertical-align: top; padding: 11px 13px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--bg); white-space: nowrap; }
+td:first-child { font-weight: 600; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.grp td { background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 13.5px; }
+
+.tl { display: flex; gap: 6px; }
+.tl > div { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; font-size: 13.5px; }
+.tl .d { font-family: var(--mono); font-size: 11.5px; color: var(--accent); display: block; margin-bottom: 4px; }
+.tl b { display: block; font-size: 14.5px; margin-bottom: 6px; line-height: 1.3; }
+.tl p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.tl .p1 { flex: 14 1 0; } .tl .p2 { flex: 18 1 0; } .tl .p3 { flex: 12 1 0; background: var(--hi-soft); } .tl .p4 { flex: 16 1 0; }
+@media (max-width: 800px) { .tl { flex-direction: column; } .tl > div { flex: none !important; } }
+
+.scripts { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 16px; }
+.card .meta { font-family: var(--mono); font-size: 11.5px; color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase; }
+.card dl { margin: 0; display: grid; gap: 10px; font-size: 14px; }
+.card dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.card dd { margin: 2px 0 0; }
+.hookrow { background: var(--hi-soft); border-radius: 8px; padding: 10px 12px; }
+.hookrow dd + dt { margin-top: 8px; }
+
+.twocol { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+ul.plain { margin: 0; padding-left: 1.15em; font-size: 14.5px; }
+ul.plain li { margin-bottom: 0.45em; }
+
+footer { border-top: 1px solid var(--line); padding-block: 32px 60px; font-size: 13px; color: var(--muted); }
+footer ul { margin: 12px 0 0; padding-left: 1.2em; }
+footer li { margin-bottom: 6px; }
+footer p { max-width: 80ch; }
+</style>
+<style>
+h1 { max-width: 15ch; }
+.slogan2 { font-size: clamp(1.25rem, 2.6vw, 1.7rem); font-weight: 700; letter-spacing: -0.015em; margin-top: 14px; color: var(--ink); }
+.glossary { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+.scene { background: var(--hi-soft); border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: 18px 22px; }
+.scene p { margin: 0 0 0.7em; max-width: 64ch; }
+.scene p:last-child { margin-bottom: 0; }
+.scene .cap { font-size: 1.05rem; font-weight: 600; }
+.note { background: var(--accent-soft); border-radius: 10px; padding: 14px 18px; font-size: 14px; max-width: 76ch; }
+.note p { margin: 0; max-width: none; }
+ol.beats { margin: 0; padding-left: 1.2em; font-size: 14px; display: grid; gap: 8px; }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <span class="who">Võ Thị Kim Đan</span>
+    <nav aria-label="Liên hệ">
+      <a href="mailto:kimdan040304@gmail.com">kimdan040304@gmail.com</a>
+      <a href="https://www.linkedin.com/in/daniellekim0403">LinkedIn</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="eyebrow">Campaign Tết 2027 · Thức ăn cho chó mèo của Truoo Pet Care · Dự án cá nhân</div>
+    <h1>Nghe tiếng là <span>có miếng.</span></h1>
+    <div class="slogan2">Boss yên bụng, Sen yên lòng.</div>
+    <p class="lead">Tết đến, Sen về quê, nhà cửa đổi khác, người trông Boss cũng chưa chắc là người quen. Nhưng có một thứ Boss nhớ rất rõ: tiếng túi hạt. Đây là ý tưởng campaign Tết 2027 cho thức ăn chó mèo của Truoo Pet Care, bắt đầu từ chính âm thanh nhỏ ấy.</p>
+    <span class="pill">Dự án cá nhân, không phải sản phẩm chính thức của Truoo Pet Care. Nguồn ở cuối trang.</span>
+    <p class="glossary">Trên trang này, Boss là các bé chó mèo và Sen là người nuôi, đúng như cách cộng đồng vẫn gọi nhau.</p>
+
+    <div class="tldr">
+      <div><span class="tag">Điều tôi nhận ra</span><p>Ai nuôi chó mèo cũng từng thấy Boss chui vào vali đúng lúc mình xếp đồ về quê. Mình đi thì nhớ Boss, mà Boss thì chẳng đi được. Nỗi lo ấy là chỗ Truoo có thể ở bên Sen.</p></div>
+      <div><span class="tag">Hướng giải quyết</span><p><strong>Đưa bữa ăn thành nhịp quen.</strong> Tiếng lắc hạt ba nhịp, đúng giờ, đúng bát, đúng chỗ, trở thành tín hiệu quen của giờ cơm và đi cùng Boss qua ngày Tết, dù Sen có ở nhà hay không.</p></div>
+      <div><span class="tag">Thông điệp chính</span><p>"Nghe tiếng là có miếng. Boss yên bụng, Sen yên lòng."</p></div>
+      <div><span class="tag">Hai món giúp được việc</span><p>Thẻ Giờ Cơm cho người trông Boss, và Tính Hạt Tết để mua đủ hạt trước khi cả xóm đóng cửa.</p></div>
+    </div>
+
+    <div class="en">
+      <span class="tag">English summary</span>
+      <p>A Tết 2027 campaign for Truoo's dog and cat food. Insight: pets sit in the suitcase just as owners pack to go home for Tết. Owners leave, pets can't follow, and the worry is real. Idea: turn the familiar sound of the kibble bag into a mealtime signal that stays constant while everything else changes. "Nghe tiếng là có miếng" (hear it, and food comes) is the campaign line, and "Boss yên bụng, Sen yên lòng" (pet settled, owner at ease) is the key message. Two useful assets carry it: a printable mealtime card for whoever looks after the pet, and a Tết food-quantity calculator. The plan covers a hero film, scripts with A/B hooks, KOC, UGC, livestream, POSM, and a detailed measurement plan. Spec project, not affiliated with Truoo.</p>
+    </div>
+  </div>
+
+  <section id="boi-canh">
+    <div class="label">Bối cảnh</div>
+    <div class="body">
+      <h2>Thị trường đang lớn, và Tết là lúc Sen cần được giúp</h2>
+      <ul class="facts">
+        <li>Cả nước ước có khoảng 27 triệu thú cưng, chó chiếm 45,1% và mèo 38%. Thị trường thức ăn thú cưng dự kiến tăng từ 141,9 lên 222,4 triệu USD trong giai đoạn 2024–2029. Nhưng mới khoảng 5% chó mèo ăn thức ăn dành riêng, nên còn nhiều Sen cần được giải thích và trấn an hơn là được so sánh thông số. <span class="src">Dân Việt, 6/3/2025</span></li>
+        <li>Mảng mèo tăng nhanh: doanh số ước tính tăng khoảng 27%, đạt ~767 tỷ đồng, và ~45% doanh thu ở các petshop thành phố lớn đến từ online và livestream. Đây là ước tính của một founder trong ngành, không phải thống kê độc lập. <span class="src">Dân Việt, 19/8/2026</span></li>
+        <li>Tết 2025, Truoo đã làm những việc rất ấm: "Tết đong đầy" gửi hơn 400kg thức ăn cho khoảng 460 chú chó ở ba trạm cứu trợ, và thử thách TikTok "Ghi Dấu Khoảnh Khắc". Campaign này đi tiếp một bước: ở bên Sen ngay trong nỗi lo rất đời thường của họ. <span class="src">truoopetcare.com</span></li>
+        <li>Khi lướt 20 bài gần nhất ở mục Tin tức trên website Truoo, tôi thấy 8 bài về doanh nghiệp và uy tín, chỉ 1 bài hướng dẫn chăm sóc. Tôi chưa xem được TikTok và Facebook, nên đây là một gợi ý chứ chưa phải kết luận.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="noi-lo">
+    <div class="label">Nỗi lo</div>
+    <div class="body">
+      <h2>Tết đến, Sen đang lo những gì?</h2>
+      <div class="pains">
+        <article class="card">
+          <span class="badge">Có nguồn</span>
+          <h3>"Nhờ ai trông Boss đây?"</h3>
+          <p>Về quê thì Boss không đi cùng được. Gửi khách sạn thì tốn kém: Tết 2026 nhiều nơi kín phòng, giá từ 80.000 đến 700.000đ mỗi ngày, và Sen còn muốn có camera. Có Sen nói thẳng: để ở nhà thì không ai chăm, mang theo thì bất tiện. <span class="sub">(NLĐ/Kenh14, 14/2/2026)</span></p>
+          <p class="opp"><b>Chỗ Truoo giúp được:</b> để người trông Boss làm đúng như Sen vẫn làm.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Có nguồn</span>
+          <h3>"Không biết Boss có chịu ăn không"</h3>
+          <p>Một Sen kể lúc về quê hai tuần, người bạn trông giúp nhắn video kèm lời báo: bé không chịu ăn, buồn bã. Đó là một chú chó, nhưng Sen nào đọc cũng hiểu cảm giác ấy. <span class="sub">(Thanh Niên, 7/2/2024)</span></p>
+          <p class="opp"><b>Chỗ Truoo giúp được:</b> giữ đúng loại hạt, đúng giờ ăn, để bữa ăn ít nhất vẫn là bữa quen.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Có nguồn</span>
+          <h3>"Pháo nổ, khách đông, Boss biến mất"</h3>
+          <p>Tiếng pháo, khách đến chơi, nhà cửa đổi khác khiến thú cưng căng thẳng, và các bài hướng dẫn dịp Tết đều khuyên dành cho Boss một góc yên tĩnh. <span class="sub">(Paddy)</span></p>
+          <p class="opp"><b>Chỗ Truoo giúp được:</b> giữa lúc nhà ồn, có một tín hiệu quen và đều đặn: tiếng hạt đúng giờ.</p>
+        </article>
+        <article class="card">
+          <span class="badge hyp">Giả thuyết</span>
+          <h3>"Bà thương quá, cho ăn cả giò chả"</h3>
+          <p>Ông bà, họ hàng thương Boss theo cách của mình: một miếng giò, một miếng chả. Và hạt thì cạn giữa Tết vì đại lý nghỉ. Chuyện đồ ăn Tết có trong các bài dặn dò chăm thú cưng, còn chuyện hết hạt giữa Tết tôi cần kiểm chứng bằng social listening ở chặng đầu.</p>
+          <p class="opp"><b>Chỗ Truoo giúp được:</b> một tờ dặn dò dễ đọc cho người thương Boss, và cách tính đủ hạt từ trước Tết.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="y-tuong">
+    <div class="label">Ý tưởng</div>
+    <div class="body">
+      <div class="idea">
+        <span class="tag">Tên campaign</span>
+        <div class="big">Nghe tiếng là <span>có miếng.</span></div>
+      </div>
+      <p class="km">Boss yên bụng, Sen yên lòng.</p>
+      <p>Sen về quê thì lo Boss ở nhà không ăn ngon. Nhà đổi khác, khách đông, pháo nổ, người trông không phải người quen. Trong ngần ấy thay đổi, có một điều Sen giữ nguyên được: bữa ăn quen. Cùng giờ, cùng bát, cùng chỗ, và cùng một tiếng lắc hạt ba nhịp trước khi đổ. Boss nghe là biết đã tới giờ cơm. Người trông Boss làm đúng như vậy, Boss vẫn nhận ra.</p>
+      <p class="sub">Vì sao là tiếng hạt: bài của 1st Pet Vet nói thay đổi lịch sinh hoạt, kể cả giờ ăn, có thể làm thú cưng căng thẳng, và một nhịp ăn đều đặn có thể trở thành tín hiệu quen thuộc. Tôi không nói tiếng hạt làm Boss hết lo. Tôi chỉ nói giữ bữa ăn thành một nhịp quen là việc Sen làm được, và Truoo có thể đứng cạnh giúp. Boss nào cũng phản ứng khác nhau, nên mọi nội dung đều để chỗ cho câu "tùy Boss".</p>
+
+      <div class="scene">
+        <span class="tag">Cảnh mở của phim chủ đạo</span>
+        <p class="cap">Cảnh mở: Boss ngồi chình ình trong vali. Sen ngoài khung hình khẽ lắc túi hạt, Boss nhảy phóc ra chạy tới.</p>
+        <p class="cap">Chữ: "Sen xếp đồ về quê. Boss đã chọn xong chỗ ngồi... cho tới khi nghe tiếng này."</p>
+      </div>
+
+      <div class="three">
+        <div class="card"><h3>Đúng giờ</h3><p>Giữ giờ ăn quen, kể cả giữa Tết. Thẻ Giờ Cơm ghi rõ để người trông Boss không phải đoán.</p></div>
+        <div class="card"><h3>Đúng bát, đúng chỗ</h3><p>Cùng chiếc bát, cùng góc ăn. Chọn hạt Boss đã quen (DeFine Dog, DogSmile, O Yummi cho chó; DeFine Cat, Catpy cho mèo) và đừng đổi loại giữa Tết.</p></div>
+        <div class="card"><h3>Đúng ba nhịp</h3><p>Lắc túi hạt ba nhịp rồi mới đổ, lần nào cũng vậy. Vẫn đủ khẩu phần ghi trên bao bì, tiếng hạt chỉ báo giờ cơm, không phải thêm bữa.</p></div>
+      </div>
+
+      <div class="card">
+        <h3>Tiếng hạt của Truoo</h3>
+        <p>Ba nhịp lắc hạt trở thành âm thanh nhận diện: đóng mọi video, mở đầu mỗi buổi livestream, và có một chuỗi video "đổ hạt" dạng ASMR để Sen cùng bật lên cho Boss nghe. Tiếng túi hạt thì nhà nào cũng có, nên thứ Truoo giữ là nghi thức ba nhịp và câu đi kèm: "Nghe tiếng là có miếng."</p>
+      </div>
+      <p class="sub">Giọng của campaign: như một Sen nuôi lâu năm nhắn nhủ trước Tết. Ấm, hơi hài, không lên lớp, không kể lể về nhà máy. Boss không "nói chuyện", Boss chỉ chạy tới. Điều để tin: công thức của đội ngũ dinh dưỡng De Heus và mạng lưới gần 200 đại lý trên cả nước (theo website Truoo). Không hứa hẹn điều trị.</p>
+    </div>
+  </section>
+
+  <section id="chang-duong">
+    <div class="label">Lộ trình</div>
+    <div class="body">
+      <h2>Bốn chặng đường đến mùng 1 Tết, thứ Bảy 6/2/2027</h2>
+      <div class="tl">
+        <div class="p1"><span class="d">4/1 – 17/1</span><b>1. Gõ nhịp</b><p>Phim chủ đạo, chuỗi ASMR đổ hạt, mở #NgheTiengCoMieng, mời KOC, đưa người xem tới Tính Hạt Tết.</p></div>
+        <div class="p2"><span class="d">18/1 – 4/2</span><b>2. Dặn nhau</b><p>Chặng chốt đơn: KOC đăng bài, hai buổi live, Thẻ Giờ Cơm, POSM ở đại lý, chốt ngày cuối nhận đơn kịp Tết.</p></div>
+        <div class="p3"><span class="d">5/2 – 10/2</span><b>3. Giờ cơm ngày Tết</b><p>Đồng hành nhẹ nhàng, không bán dồn. Chia sẻ lại video của cộng đồng, "giờ cơm mùng 1".</p></div>
+        <div class="p4"><span class="d">11/2 – 28/2</span><b>4. Về lại nhịp</b><p>Hỏi thăm "Boss Tết thế nào", trao giải, tổng kết, hướng dẫn Boss quay lại nhịp ăn thường ngày.</p></div>
+      </div>
+
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Mong muốn</th><th>Con số đề xuất</th><th>Đo bằng</th></tr></thead>
+          <tbody>
+            <tr><td>Nhiều người biết đến</td><td class="num">2 triệu lượt tiếp cận</td><td>Organic, KOC và quảng cáo, chặng 1 đến 3</td></tr>
+            <tr><td>Nhớ được tiếng</td><td class="num">≥ 30% nhận ra ba nhịp</td><td>Khảo sát nhỏ trong cộng đồng theo dõi</td></tr>
+            <tr><td>Nhiều người dùng thử</td><td class="num">8.000 lượt tải/quét Thẻ · 5.000 lượt Tính Hạt</td><td>Link có UTM, QR ở đại lý</td></tr>
+            <tr><td>Cộng đồng cùng kể</td><td class="num">300 video · 10 KOC</td><td>#NgheTiengCoMieng, duyệt thủ công</td></tr>
+            <tr><td>Ra đơn</td><td class="num">+30% đơn online ở chặng 2</td><td>So với 3 tuần liền trước, TikTok Shop và Shopee</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sub">Người tôi nghĩ tới: một bạn 22–35 tuổi làm việc xa quê, gọi Boss là "con", hay đặt hạt qua TikTok Shop và Shopee, và người đứng sau bạn ấy: ông bà, bố mẹ hay hàng xóm sẽ trông Boss. Các con số là mức khởi điểm để bàn, sẽ chốt lại sau khi có số liệu thật của các kênh trong 4 tuần gần nhất.</p>
+    </div>
+  </section>
+
+  <section id="noi-dung">
+    <div class="label">Nội dung</div>
+    <div class="body">
+      <h2>Hai món giúp được việc, một phim chủ đạo và những video khiến người ta dừng lại</h2>
+
+      <div class="three">
+        <div class="card"><h3>Ba nhịp quen</h3><p>Cảnh đổ hạt, ASMR, thử phản ứng của Boss. Đánh vào thói quen giờ cơm.</p></div>
+        <div class="card"><h3>Tết ở nhà Boss</h3><p>Chuyện đời dịp Tết, hài nhẹ: vali, người trông, khách đến chơi.</p></div>
+        <div class="card"><h3>Sen dặn Sen</h3><p>Nội dung hữu ích, đáng để lưu: Thẻ Giờ Cơm, Tính Hạt Tết.</p></div>
+      </div>
+
+      <div class="twocol">
+        <div class="card">
+          <h3>Thẻ Giờ Cơm</h3>
+          <p>Một tờ chữ to dán lên tủ lạnh, dành cho người trông Boss: tên Boss, giờ ăn, bát nào, đặt ở đâu, đổ bao nhiêu (theo bao bì), cách lắc hạt ba nhịp trước khi đổ. Kèm những điều đừng cho ăn (giò, chả, xương, hành, tỏi), Boss sợ gì và hay trốn ở đâu, số của Sen và của phòng khám thú y trực Tết. Có bản tải về, và bản in phát ở đại lý kèm mã QR.</p>
+        </div>
+        <div class="card">
+          <h3>Tính Hạt Tết</h3>
+          <p>Sen nhập số Boss, cân nặng, số ngày vắng nhà (cộng thêm 3 ngày dự phòng), công cụ báo cần mua bao nhiêu hạt theo hướng dẫn trên bao bì, rồi dẫn thẳng tới TikTok Shop, Shopee hoặc đại lý gần nhất. Mua đủ từ trước để mùng 2 không phải chạy đi tìm.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="meta">Phim chủ đạo · 40 giây · hai phiên bản chó và mèo</span>
+        <h3>"Cho tới khi nghe tiếng này"</h3>
+        <ol class="beats">
+          <li><b>0–6 giây, cảnh mở như trên.</b> Bản mèo: Boss từ tốn bước ra khỏi vali, vươn vai. Bản chó: Boss nhảy phóc ra, đuôi quẫy.</li>
+          <li><b>6–20 giây, ba lần nghe tiếng giữa Tết.</b> Boss đang nằm trên đống lì xì thì ngóc đầu dậy. Khách đông ngoài phòng khách, Boss ló ra từ gầm bàn khi nghe tiếng ở gian bếp. Pháo nổ xa ngoài cửa sổ, tiếng hạt vang lên và Boss quay vào. Cảnh nào cũng để Boss tự phản ứng, không ép.</li>
+          <li><b>20–32 giây, trao lại nhịp.</b> Sen viết Thẻ Giờ Cơm, dán lên tủ lạnh, hướng dẫn bà lắc thử ba nhịp trước khi Sen ra cửa. Bà lắc, Boss chạy tới, bà cười.</li>
+          <li><b>32–40 giây, khép lại.</b> Chữ: "Nghe tiếng là có miếng. Boss yên bụng, Sen yên lòng." Ba nhịp lắc hạt, logo Truoo.</li>
+        </ol>
+      </div>
+
+      <div class="scripts">
+        <article class="card">
+          <div><div class="meta">Video 1 · 30 giây · Tết ở nhà Boss</div><h3>"Bà nhận trông Boss"</h3></div>
+          <dl>
+            <div class="hookrow">
+              <dt>Mở đầu A</dt><dd>Hình camera nhà, góc cao, Boss ngồi quay lưng với bà đang cầm bát. Chữ: "Bà nhận trông Boss. Boss chưa nhận bà."</dd>
+              <dt>Mở đầu B</dt><dd>Tin nhắn Zalo Sen dặn dài dằng dặc, bà nhắn lại: "Con dặn gì dài quá, bà không đọc nổi." Chữ: "Nhờ bà trông Boss? Dặn bằng giấy, đừng dặn bằng Zalo."</dd>
+            </div>
+            <div><dt>Cảnh chính</dt><dd>Sen gọi video, hồi hộp. Bà đọc Thẻ Giờ Cơm từng dòng, rồi lắc túi hạt đúng ba nhịp. Boss ló ra, bước lại gần bát.</dd></div>
+            <div><dt>Lời kết</dt><dd>Bà: "Tờ này dễ đọc hơn Zalo của con." Chữ: "Nghe tiếng là có miếng. Boss yên bụng, Sen yên lòng."</dd></div>
+            <div><dt>Theo dõi</dt><dd>Giữ chân 3 giây đầu, lượt chia sẻ (gắn thẻ người sẽ trông Boss), lượt tải Thẻ.</dd></div>
+          </dl>
+        </article>
+
+        <article class="card">
+          <div><div class="meta">Video 2 · 25 giây · Sen dặn Sen</div><h3>"Mùng 2, còn ba nhịp"</h3></div>
+          <dl>
+            <div class="hookrow">
+              <dt>Mở đầu A</dt><dd>Lắc túi hạt gần rỗng. Chữ: "Mùng 2. Cả xóm đóng cửa. Tiếng hạt chỉ còn ba nhịp."</dd>
+              <dt>Mở đầu B</dt><dd>"Nhà một chó một mèo, nghỉ Tết 9 ngày. Cần mua mấy bao hạt? Đoán thử trước khi xem." Đồng hồ đếm 3 giây, đáp án ở cuối video.</dd>
+            </div>
+            <div><dt>Cảnh chính</dt><dd>Cách tính nhanh: số ngày vắng nhà cộng 3 ngày dự phòng, nhân khẩu phần trên bao, nhân số Boss. Nhắc nhẹ: đừng đổi hạt giữa Tết. Mở Tính Hạt Tết trên điện thoại.</dd></div>
+            <div><dt>Lời kết</dt><dd>"Tính hạt Tết cho Boss ở link giỏ hàng."</dd></div>
+            <div><dt>Theo dõi</dt><dd>Lượt lưu, lượt dùng công cụ, lượt bấm mua.</dd></div>
+          </dl>
+        </article>
+
+        <article class="card">
+          <div><div class="meta">Video 3 · 20 giây · Ba nhịp quen (chuỗi ASMR)</div><h3>"Giờ cơm"</h3></div>
+          <dl>
+            <div class="hookrow">
+              <dt>Mở đầu A</dt><dd>Cận cảnh hạt rơi vào bát, không lời. Chữ: "Bật loa lên. Nếu Boss nhà bạn chạy tới thì bạn thắng."</dd>
+              <dt>Mở đầu B</dt><dd>Chữ: "Boss nhà bạn mất mấy giây để chạy tới khi nghe tiếng này? Đếm thử." Đồng hồ chạy ở góc màn hình.</dd>
+            </div>
+            <div><dt>Cảnh chính</dt><dd>Ba nhịp lắc, hạt đổ vào bát, một chú chó hoặc mèo (thay phiên nhau) bước vào khung hình. Không giọng đọc, chỉ có âm thanh của nhà.</dd></div>
+            <div><dt>Lời kết</dt><dd>Chữ: "Nghe tiếng là có miếng." Câu hỏi cuối: "Boss nhà bạn hết mấy giây? Comment cho tụi mình biết."</dd></div>
+            <div><dt>Theo dõi</dt><dd>Số video dùng lại âm thanh, bình luận kể số giây, tỷ lệ xem đến cuối.</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="card">
+        <h3>Những cách mở đầu khác để dành cho các video sau</h3>
+        <ul class="plain">
+          <li>"Mùng 1, Boss biến mất bốn tiếng. Tìm ra ở... tủ giày."</li>
+          <li>"Khách sạn thú cưng dịp Tết kín phòng, giá đến 700 nghìn một đêm. Còn nhờ bà thì sao?"</li>
+          <li>"Camera nhà: Boss ngồi trước cửa đúng giờ Sen hay về."</li>
+          <li>"Năm câu người trông Boss hay nói khiến bạn muốn bay về ngay."</li>
+          <li>"Đừng đổi hạt vào mùng 3. Lý do thứ hai nghe hơi buồn cười."</li>
+          <li>"Tết này Boss không đi được. Nhưng giờ cơm của Boss, mình dặn đủ rồi."</li>
+        </ul>
+        <p class="sub">Mỗi video quay sẵn hai cách mở đầu, đăng thử cho một nhóm nhỏ. Cách nào giữ người xem qua 3 giây đầu tốt hơn thì đi tiếp.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cong-dong">
+    <div class="label">Cộng đồng</div>
+    <div class="body">
+      <h2>Để chính các Sen kể chuyện giờ cơm của Boss</h2>
+      <div class="twocol">
+        <div class="card">
+          <h3>10 KOC, ba kiểu Sen</h3>
+          <ul class="plain">
+            <li>Sen văn phòng xa quê: kể chuyện "nhờ bà trông Boss".</li>
+            <li>Nhà nhiều Boss, có cả chó lẫn mèo: giờ cơm ồn ào, mỗi bé một kiểu chạy tới.</li>
+            <li>Sen của một Boss nhút nhát hoặc hay ăn thất thường: kể chuyện giữ bữa ăn quen trong ngày Tết.</li>
+            <li>Mỗi KOC có một mã riêng để biết đơn đến từ ai. Brief gọn một trang: ba điều nên nói, hai điều không nói (không hứa hẹn điều trị, không so sánh trực tiếp với hãng khác), ghi rõ đây là nội dung hợp tác. Duyệt kịch bản trong 24 giờ.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Thử thách #NgheTiengCoMieng</h3>
+          <ul class="plain">
+            <li>Clip 15 giây: Sen lắc hạt ba nhịp và quay phản ứng của Boss, ghi "Boss nhà mình hết ... giây". Boss nào chưa chịu nghe thì dùng thêm #BossChuaChiuNghe, vẫn có thể lên sóng.</li>
+            <li>Luật chơi ghi rõ: đúng khẩu phần trên bao bì, không ép Boss, không thêm bữa.</li>
+            <li>Mỗi tuần chọn 10 người nhận "Hộp Giờ Cơm". Video hay được xin phép chia sẻ lại.</li>
+            <li>Sau Tết chuyển sang #BossVeNhip: ảnh và video Boss quay lại nhịp cũ.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Livestream "Giờ Cơm Ngày Tết"</h3>
+          <p class="sub">45 phút, hai buổi: Chủ nhật 24/1 và 31/1/2027, 20:00.</p>
+          <ul class="plain">
+            <li>0–5': mở bằng phim chủ đạo, host lắc túi hạt ba nhịp, ai có Boss ở gần thì thử và khoe trong bình luận.</li>
+            <li>5–20': host và một KOC viết Thẻ Giờ Cơm ngay trên live, gọi video cho "người trông Boss" (bà hoặc mẹ của KOC) để nghe bà đọc lại thẻ.</li>
+            <li>20–35': tính hạt Tết trực tiếp. Người xem bình luận số Boss và số ngày vắng nhà, host báo cần mua mấy bao.</li>
+            <li>35–45': giới thiệu "Hộp Giờ Cơm" (đề xuất: hạt đủ cả kỳ Tết, Thẻ in sẵn, lì xì in hình Boss), bốc thăm 10 hộp.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Ở gần 200 đại lý, và cả những bé chưa có nhà</h3>
+          <ul class="plain">
+            <li>Standee "Nhà bạn nghỉ Tết mấy ngày?" kèm QR dẫn vào Tính Hạt Tết. Thẻ Giờ Cơm in phát kèm đơn hàng, để cả người mua hộ ông bà cũng có.</li>
+            <li>Nối tiếp "Tết đong đầy" 2025: cứ mỗi 100 Thẻ được tải, Truoo gửi một bao hạt tới trạm cứu trợ. Đây là đề xuất, số lượng cần tính cùng ngân sách.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="do-luong">
+    <div class="label">Đo lường</div>
+    <div class="body">
+      <h2>Đo gì, đo thế nào, và lệch thì sửa ra sao</h2>
+      <p>Tôi chia việc đo thành năm câu hỏi: người ta có dừng lại không, có thấy hữu ích không, có làm theo không, có kể lại không, và có nhớ tiếng không. Mỗi chỉ số đều có mức cần đạt và một việc sẽ làm nếu chưa đạt.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Chỉ số</th><th>Cách tính</th><th>Mức cần đạt</th><th>Đo ở đâu</th><th>Nếu chưa đạt thì</th></tr></thead>
+          <tbody>
+            <tr class="grp"><td colspan="5">Người ta có dừng lại không?</td></tr>
+            <tr><td>Giữ chân 3 giây đầu (hook rate)</td><td>Lượt xem từ 3 giây ÷ lượt hiển thị</td><td class="num">≥ 30%</td><td>TikTok Analytics</td><td>Dưới 20%: đổi sang cách mở đầu còn lại</td></tr>
+            <tr><td>Xem đến cuối (hold rate)</td><td>Lượt xem hết hoặc ≥ 15 giây ÷ lượt xem</td><td class="num">≥ 20%</td><td>TikTok Analytics</td><td>Mở đầu tốt mà người xem rời giữa chừng: cắt ngắn đoạn giữa, đưa phần đáng xem lên sớm hơn</td></tr>
+            <tr class="grp"><td colspan="5">Có thấy hữu ích không?</td></tr>
+            <tr><td>Tỷ lệ lưu</td><td>Lượt lưu ÷ lượt xem</td><td class="num">≥ 2%</td><td>TikTok, Meta Insights</td><td>Xem lại video có thật sự giúp được việc không, viết lại phần chính</td></tr>
+            <tr><td>Tỷ lệ chia sẻ</td><td>Lượt chia sẻ ÷ lượt xem</td><td class="num">≥ 0,5%</td><td>TikTok, Meta Insights</td><td>Thêm lời rủ gắn thẻ người sẽ trông Boss</td></tr>
+            <tr><td>Bình luận kể chuyện thật</td><td>Bình luận có chuyện thật ÷ 50 bình luận mẫu</td><td class="num">≥ 40%</td><td>Đọc thủ công, ghi vào bảng</td><td>Đổi câu hỏi cuối video cho cụ thể hơn</td></tr>
+            <tr class="grp"><td colspan="5">Có làm theo không?</td></tr>
+            <tr><td>Bấm sang Thẻ, công cụ, shop</td><td>Lượt bấm ÷ lượt xem</td><td class="num">≥ 1%</td><td>Link UTM, GA4</td><td>Lưu nhiều mà bấm ít: ghim link ở bình luận, nói rõ bước tiếp theo</td></tr>
+            <tr><td>Tải hoặc quét Thẻ Giờ Cơm</td><td>Lượt tải web cộng lượt quét QR</td><td class="num">8.000</td><td>GA4, QR theo từng điểm</td><td>Chậm ở đầu chặng 2: phát thêm ở đại lý, nhờ KOC nhắc lại</td></tr>
+            <tr><td>Dùng Tính Hạt Tết</td><td>Lượt bấm mua hoặc tìm đại lý ÷ lượt tính</td><td class="num">≥ 25%</td><td>GA4</td><td>Rút gọn bước nhập, làm nút mua rõ hơn</td></tr>
+            <tr><td>Tỷ lệ mua ở shop</td><td>Đơn ÷ lượt bấm vào shop</td><td class="num">≥ 2%</td><td>TikTok Shop, Shopee</td><td>Bấm nhiều mà mua ít: kiểm tra giá, tồn kho, hạn giao kịp Tết</td></tr>
+            <tr><td>ROAS quảng cáo</td><td>Doanh thu ÷ chi phí quảng cáo</td><td class="num">≥ 3</td><td>Meta, TikTok Ads Manager</td><td>Dưới 3 trong 3 ngày liền: giảm ngân sách, dồn sang cách mở đầu đang thắng</td></tr>
+            <tr class="grp"><td colspan="5">Có kể lại không?</td></tr>
+            <tr><td>KOC</td><td>Tương tác ÷ lượt xem; chi phí ÷ lượt xem; đơn theo mã</td><td class="num">Tương tác ≥ 4%</td><td>Mã KOC, TikTok</td><td>Hai video liền dưới mức này: dừng, dồn cho KOC có đơn theo mã</td></tr>
+            <tr><td>Video của cộng đồng</td><td>Video đúng thể lệ ÷ tổng video có hashtag</td><td class="num">300 video</td><td>Bảng theo dõi thủ công</td><td>Tăng giải thưởng tuần, nhờ KOC làm mẫu</td></tr>
+            <tr><td>Livestream</td><td>Thời gian xem trung bình; bình luận ÷ người xem; đơn ÷ 100 người xem</td><td class="num">Xem TB ≥ 2 phút</td><td>Trung tâm livestream TikTok</td><td>Người xem rớt sau phút 20: đưa phần tính hạt lên sớm hơn</td></tr>
+            <tr><td>Đại lý</td><td>Số đại lý nhận POSM; lượt quét QR mỗi điểm</td><td class="num">≥ 150 đại lý</td><td>QR theo từng điểm</td><td>Điểm quét thấp: đổi vị trí đặt standee</td></tr>
+            <tr class="grp"><td colspan="5">Có nhớ tiếng không?</td></tr>
+            <tr><td>Dùng lại âm thanh</td><td>Số video dùng lại âm thanh ba nhịp</td><td class="num">≥ 300 video</td><td>Trang âm thanh trên TikTok</td><td>Ít dùng lại: mời KOC làm mẫu, đặt âm thanh ở đầu video thay vì cuối</td></tr>
+            <tr><td>Nhận ra ba nhịp</td><td>Người chọn đúng "Truoo" ÷ người trả lời khảo sát</td><td class="num">≥ 30%</td><td>Khảo sát nhỏ trong cộng đồng theo dõi, hai lần: trước chặng 1 và cuối chặng 3</td><td>Chưa tăng giữa hai lần đo: lặp ba nhịp ở đầu mọi video thay vì chỉ cuối</td></tr>
+            <tr><td>Số giây Boss chạy tới</td><td>Số giây trung vị Sen tự ghi trong bình luận và video thử thách (mẫu tham khảo, không phải nghiên cứu)</td><td class="num">Ghi nhận, không đặt mức</td><td>Đọc thủ công, ghi vào bảng</td><td>Dùng để làm nội dung, không dùng để khẳng định hiệu quả sản phẩm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sub">Các mức cần đạt là đề xuất để bắt đầu, sẽ chỉnh theo số liệu thật của từng kênh trong 4 tuần trước Tết và theo biên lợi nhuận thực tế.</p>
+
+      <div class="twocol">
+        <div class="card">
+          <h3>Tôi sẽ ra quyết định thế nào</h3>
+          <ul class="plain">
+            <li>Nội dung được xem nhiều nhưng ít người làm theo vẫn giữ khoảng 15% để nhiều người biết đến Truoo. Phần còn lại dồn cho nội dung dẫn tới tải Thẻ và mua hàng. Tôi từng làm đúng như vậy ở 003LAB.</li>
+            <li>Ngân sách quảng cáo: 20% để thử cách mở đầu, 60% đẩy mạnh cái đang thắng, 20% nhắc lại những người đã tải Thẻ hoặc xem quá nửa video.</li>
+            <li>Chốt rõ ngày cuối nhận đơn kịp giao trước Tết và ghi trên mọi lời kêu gọi.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Nhịp theo dõi và cách biết đơn từ đâu đến</h3>
+          <ul class="plain">
+            <li>72 giờ đầu của mỗi video: xem giữ chân 3 giây và xem đến cuối, quyết định giữ hay đổi cách mở đầu.</li>
+            <li>Mỗi tuần một trang báo cáo: ba con số chính, một điều học được, một việc sẽ đổi.</li>
+            <li>Sau Tết: báo cáo tổng kết cả hành trình, cách mở đầu nào thắng, KOC nào hiệu quả, và gợi ý cho Tết sau.</li>
+            <li>Biết đơn từ đâu: link gắn UTM, mã riêng cho từng KOC, QR riêng cho từng đại lý, và một câu hỏi "bạn biết Truoo từ đâu" sau khi mua.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Dự án cá nhân độc lập của Võ Thị Kim Đan, không liên kết và không được Truoo Pet Care hay De Heus tài trợ hay xác nhận. Thông tin sản phẩm và số liệu lấy từ nguồn công khai dưới đây, đối chiếu ngày 21/9/2026. Kịch bản, hashtag, tên các công cụ, con số mục tiêu và các đề xuất là ý tưởng của tôi. Mùng 1 Tết Đinh Mùi là thứ Bảy, 6/2/2027.</p>
+    <ul>
+      <li><a href="https://danviet.vn/thi-truong-thu-cung-viet-nam-gen-z-tham-gia-dong-dao-san-sang-chi-tra-hang-trieu-cham-soc-va-lam-dep-cho-meo-d1452578.html">Dân Việt, 19/8/2026: Thị trường thú cưng Việt Nam, Gen Z tham gia đông đảo</a></li>
+      <li><a href="https://danviet.vn/thi-truong-thuc-an-thu-cung-lon-vi-chi-co-5-cho-meo-duoc-an-thuc-an-danh-rieng-20250306163310176-d1214240.html">Dân Việt, 6/3/2025: Chỉ có 5% chó, mèo trong nước được ăn thức ăn dành riêng</a></li>
+      <li><a href="https://kenh14.vn/khach-san-cho-meo-chay-phong-dip-tet-chu-chi-tien-trieu-gui-thu-cung-215260214164759094.chn">Kenh14 (theo Người Lao Động), 14/2/2026: Khách sạn chó mèo "cháy phòng" dịp Tết</a></li>
+      <li><a href="https://thanhnien.vn/vi-sao-nhieu-nguoi-chiu-kho-dua-thu-cung-ve-que-an-tet-185240206001954689.htm">Thanh Niên, 7/2/2024: Vì sao nhiều người "chịu khổ" đưa thú cưng về quê ăn Tết?</a></li>
+      <li><a href="https://paddy.vn/blogs/nhung-luu-y-khi-cham-soc-cho-meo-trong-dip-tet">Paddy: Những lưu ý khi chăm sóc chó mèo trong dịp Tết</a></li>
+      <li><a href="https://1stpetvet.com/pet-health-information/how-schedule-changes-affect-pets-and-how-to-help/">1st Pet Vet: How Schedule Changes Affect Pets, and How to Help</a></li>
+      <li><a href="https://www.truoopetcare.com/tin-tuc/tin-moi/khong-lo-bung-doi-tet-dong-day-cho-thu-cung-tai-tram-cuu-tro-cung-truoo-pet-care">Truoo Pet Care: "Không lo bụng đói! Tết đong đầy cho thú cưng tại trạm cứu trợ"</a></li>
+      <li><a href="https://www.truoopetcare.com/tin-tuc/tin-moi/thu-thach-tiktok-ghi-dau-khoanh-khac-tet-yeu-thuong-cung-thu-cung">Truoo Pet Care: thử thách TikTok Tết 2025</a></li>
+      <li><a href="https://www.truoopetcare.com/en/products/cat-food/define-cat">Truoo Pet Care: DeFine Cat</a> · <a href="https://www.truoopetcare.com/tin-tuc/tin-moi">Mục Tin tức</a></li>
+      <li><a href="https://saptet.vn/tet-2027-la-ngay-nao/">Sắp Tết: Tết Đinh Mùi 2027 là ngày nào</a></li>
+    </ul>
+  </footer>
+
+</div>
+</body></html>

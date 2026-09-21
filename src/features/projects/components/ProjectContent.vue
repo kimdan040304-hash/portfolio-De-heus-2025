@@ -42,7 +42,7 @@ onMounted(loadPreviews);
 <template>
   <Layout class="project-content">
     <ProjectHero :content="content" :projectId="projectId" />
-    <div class="project-content-components">
+    <div class="project-content-components" v-if="content.components?.length">
       <div
         v-for="(component, index) in content.components"
         :key="`${component.type}-${index}`"

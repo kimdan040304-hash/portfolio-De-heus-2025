@@ -50,6 +50,17 @@ watch(projectId, () => {
           t("source-code")
         }}</Button>
       </Link>
+      <Link
+        v-if="content.proposalLink"
+        :href="content.proposalLink"
+        external
+        class="project-hero-button"
+        data-cursor="arrow-external"
+      >
+        <Button renderAs="div" variant="accent" class="children-unclickable" data-hoversound="hover">{{
+          t("view-full-proposal")
+        }}</Button>
+      </Link>
     </div>
   </div>
 </template>

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { onMounted, onUnmounted, ref } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ButtonRound from "../../../components/ButtonRound.vue";
+import Button from "../../../components/Button.vue";
 import { t } from "../../../i18n/utils/translate";
 import { social } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
@@ -32,7 +33,9 @@ onMounted(async () => {
     },
   });
   tl.fromTo(wrapperRef.value, { scale: 0.8 }, { scale: 1, duration: 0.4, ease: "power1.out" }, 0);
-  tl.fromTo(imageRef.value, { scale: 1.2 }, { scale: 1, duration: 0.4, ease: "power1.out" }, 0);
+  if (imageRef.value) {
+    tl.fromTo(imageRef.value, { scale: 1.2 }, { scale: 1, duration: 0.4, ease: "power1.out" }, 0);
+  }
 
   tlRef.value = tl;
 });
@@ -48,16 +51,28 @@ onUnmounted(() => {
 <template>
   <Link
     class="preview-card children-unclickable"
-    :to="`/project/${props.preview.slug}`"
-    :aria-label="t('switch-to-project', { project: props.preview.title })"
-    data-cursor="arrow"
+    :to="props.preview.externalLink ? undefined : `/project/${props.preview.slug}`"
+    :href="props.preview.externalLink"
+    :external="!!props.preview.externalLink"
+    :aria-label="
+      props.preview.externalLink ? t('view-full-proposal') : t('switch-to-project', { project: props.preview.title })
+    "
+    :data-cursor="props.preview.externalLink ? 'arrow-external' : 'arrow'"
     data-sound="click"
     data-hoversound="hover"
     v-if="props.preview"
   >
     <div class="preview-card-top" ref="wrapperRef">
       <div class="preview-card-image-wrapper">
-        <div class="preview-card-image-container">
+        <div
+          class="preview-card-image-container preview-card-link-container"
+          v-if="props.preview.externalLink && !props.preview.thumbnail"
+        >
+          <Button renderAs="div" variant="accent" class="children-unclickable">
+            {{ t("view-full-proposal") }}
+          </Button>
+        </div>
+        <div class="preview-card-image-container" v-else>
           <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
         </div>
       </div>
@@ -196,6 +211,16 @@ onUnmounted(() => {
       border-radius: var(--radius-lg);
       overflow: hidden;
       background-color: var(--color-beige-500);
+    }
+  }
+
+  &-link {
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-beige-500);
+      padding: var(--space-lg);
     }
   }
 

@@ -16,7 +16,8 @@ export type TagVariant =
   | "content"
   | "events"
   | "design"
-  | "marketing";
+  | "marketing"
+  | "self-initiated";
 
 export const tagLabels = {
   three: "Three.js",
@@ -37,4 +38,5 @@ export const tagLabels = {
   events: "Events",
   design: "Product Team Lead",
   marketing: "Marketing Lead",
+  "self-initiated": "Self-Initiated Project",
 } as const satisfies Record<TagVariant, string>;

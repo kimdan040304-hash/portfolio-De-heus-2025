@@ -1,7 +1,7 @@
 {
   "about": "About",
-  "about-intro": "Hi, I'm Đan — part strategist, part copywriter, part ads-manager-whisperer.<br />I've planned content calendars, run paid campaigns across Meta and TikTok, built websites, and coordinated international events, sometimes all in the same week.",
-  "about-tagline": "Hi, I'm Đan — part strategist, part copywriter, part ads-manager-whisperer. I've planned content calendars, run paid campaigns across Meta and TikTok, built websites, and coordinated international events, sometimes all in the same week. Marketing, to me, is just testing smarter until the numbers say yes. AI just helps me test faster.",
+  "about-intro": "Hi, I'm Kim Đan! I'm a curious content marketer who loves figuring out what makes people care, then turning that into content that feels natural, not forced.<br />Outside of work, I'm a full-time mom to three tiny cats, so when I say I love pets, I really mean it. 🐱🐱🐱 That's why Truoo Pet Care feels exciting to me: a chance to combine what I genuinely care about with what I love doing.",
+  "about-tagline": "Hi, I'm Kim Đan! I'm a curious content marketer who loves figuring out what makes people care, then turning that into content that feels natural, not forced. Outside of work, I'm a full-time mom to three tiny cats, so when I say I love pets, I really mean it. 🐱🐱🐱 That's why Truoo Pet Care feels exciting to me: a chance to combine what I genuinely care about with what I love doing.",
   "back-to-home": "Back to home",
   "contact": "Contact",
   "description": "Description",
@@ -25,5 +25,6 @@
   "source-code": "Source Code",
   "switch-to-project": "Switch to project {project}",
   "version": "Version",
+  "view-full-proposal": "View Full Proposal",
   "view-project": "View project"
 }
